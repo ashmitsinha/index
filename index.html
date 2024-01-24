@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <style>
+        body {
+            margin: 0;
+            /* font-family: Arial, sans-serif; */
+            font-family: 'Mukta', sans-serif;
+            display: flex;
+            flex-direction: column;
+            /* Stack elements vertically */
+        }
+
+        .navbar-vertical {
+            height: 100vh;
+            /* Full height of the viewport */
+            width: 70px;
+            /* Set the width of the vertical navbar */
+            background-color: white;
+            /* Background color */
+            position: fixed;
+            /* Fixed position to stay on the left side */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            /* Center elements vertically */
+            overflow: hidden;
+            /* Hide overflowing text initially */
+            transition: width 0.3s ease-in;
+            /* Add transition for smooth effect */
+            z-index: 1;
+            /* Ensure the vertical navbar is behind the horizontal navbar */
+        }
+
+        .navbar-vertical:hover {
+            width: 200px;
+            
+            /* Expand the vertical navbar on hover */
+        }
+
+        .navbar-vertical a {
+            padding: 15px;
+            text-decoration: none;
+            color: black;
+            text-align: center;
+            width: 100%;
+            box-sizing: border-box;
+            transition: background-color 0.3s ease-in;
+            display: flex;
+            flex-direction: row;
+            /* margin: 40px; */
+            align-items: center;
+        }
+
+        .navbar-vertical a span {
+            display: none;
+            /* Hide the text initially */
+        }
+
+        .navbar-vertical:hover a span {
+            display: block;
+            /* Display the text when navbar is hovered */
+        }
+
+        .navbar-vertical img {
+            width: 50px;
+            /* Set the width of the icons */
+            margin-bottom: 5px;
+            /* Add margin to separate image and text */
+        }
+
+        .navbar-horizontal {
+            background-color: white;
+            /* Background color */
+            width: 100%;
+            /* Occupy full width */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            box-sizing: border-box;
+            z-index: 2;
+            /* Ensure the horizontal navbar is above the vertical navbar */
+            height: 60px;
+        }
+
+        .navbar-horizontal p {
+            width: 40px;
+            /* Set the width of the logo */
+        }
+
+        .navbar-horizontal span {
+            color: rgb(12, 12, 12);
+            font-weight: bold;
+            text-align: center;
+            /* Center the text horizontally */
+            flex-grow: 1;
+            /* Allow the text to take up remaining space */
+        }
+
+        .content {
+            padding: 150px;
+            background-color: rgba(223, 223, 223, 0.421);
+            width: 100%;
+            height: 92vh;
+            /* Take the full height of the viewport */
+            box-sizing: border-box;
+        }
+
+        .big-div {
+            width: 105%;
+            /* Adjust the width as needed */
+            height: 125%;
+            /* Adjust the height as needed */
+            margin: auto;
+            /* Center the big div horizontally */
+            background-color: #ffffff;
+            /* Background color of the big div */
+            border: 1px solid #000000;
+            /* Border color and thickness */
+            margin-top: -40px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .section {
+            /* border: 1px solid #000000; */
+            /* Border color and thickness */
+            margin: 1px;
+            padding: 1px;
+            text-align: center;
+            flex-grow: 1;
+            /* Each vertical section takes up equal space */
+        }
+
+        #top {
+            flex-grow: 0.1;
+            /* Make the size smaller for top section */
+            display: flex;
+            flex-direction: row;
+            /* Align the sub-divs horizontally */
+            justify-content: space-between;
+            /* Add space between the sub-divs */
+        }
+
+        #top .left-group,
+        #top .right-group {
+            display: flex;
+        }
+
+        #top .left-group .sub-div,
+        #top .right-group .sub-div {
+            /* border: 1px solid #000000; */
+            /* Border color and thickness for sub-divs */
+            padding: 10px;
+            padding-bottom: 2px;
+            text-align: center;
+            flex-grow: 1;
+            /* Each sub-div takes up equal space */
+            margin-right: 10px;
+            /* Add margin to create space between sub-divs */
+        }
+
+        #top .left-group .sub-div:last-child,
+        #top .right-group .sub-div:last-child {
+            margin-right: 0;
+            /* Remove right margin for the last sub-div in each group */
+        }
+
+        #bottom {
+            flex-grow: 0.1;
+        }
+
+        .input-container {
+    display: flex;
+    align-items: center;
+}
+
+.input-label {
+    color: black;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.input-field {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#middle {
+    text-align: center;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: center;
+}
+
+.flex-form {
+    display: flex;
+    width: 90%;
+}
+
+.left {
+    background-color: white;
+    width: 100%;
+    /* margin-bottom: -10%; */
+    height: 100%;
+}
+
+.right {
+    /* margin-top: 2.0%; */
+    /* margin-bottom: 6.95%; */
+    /* margin-left: 10px; */
+    /* border: 2px solid red; */
+    width: 100%;
+    height: 100%;
+}
+
+
+    </style>
+</head>
+
+<body>
+
+    <div class="navbar-horizontal">
+        <p>SummarEase</p>
+        <span id="selected-option">Summarizer</span>
+    </div>
+
+    <div class="navbar-vertical">
+        <a href="#"><img src="summary.png" alt="Home" title="Home"><span>Summary</span></a>
+        <a href="#"><img src="pdf.png" alt="About" title="About"><span>Pdf</span></a>
+        <a href="#"><img src="grammar.png" alt="Services" title="Services"><span>Grammar</span></a>
+        <a href="#"><img src="history.png" alt="Contact" title="Contact"><span>History</span></a>
+        <a href="#"><img src="logout.png" alt="Contact" title="Contact"><span>Logout</span></a>
+    </div>
+    <div class="content">
+        hello
+    </div>
+<!-- 
+    <div class="content">
+        <div class="big-div">
+            <div class="section" id="top">
+                <div class="left-group">
+                    <div class="sub-div">Summarizer</div>
+                    <div class="sub-div">
+                        <div class="input-container">
+                            <label for="maxL" class="input-label">Length:</label>
+                            <input type="text" name="maxL" value="{{ maxL }}" class="input-field">
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="right-group">
+                    <div class="sub-div">
+                        <a href='{% url "texttospeech" %}'>Microphone</a>
+                    </div>
+                    <div class="sub-div">
+                        <a href="#" id="translatebutton"
+                            
+                            onclick="toggleLanguageMenu()">
+                            Translate</a>
+                        <div id="language-menu" style="display: none;">
+                            <form id="language-form" action="{% url 'translate_summary' %}" method="get">
+                                <select id="target-language" name="target_language" class="language-dropdown">
+                                    <option value="en">English</option>
+                                    <option value="hi">Hindi</option>
+                                    <option value="kn">Kannada</option>
+                                    <option value="te">Telugu</option>
+                                    <option value="fr">French</option>
+                                    <option value="de">German</option>
+                                </select>
+                                <input type="submit" value="Translate">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section" id="middle">
+                <div class="flex-container">
+                    <form id='summarizeForm' action="{% url 'output' %}" method="post" class="flex-form">
+            
+                        <div class="left">
+                            <textarea placeholder="Enter text for summarization" ondragstart="return false;" id="inputText" name='data' type="text" rows="8" cols="40" required style="font-size: 15px; font-family: 'Arial', 'Helvetica', sans-serif; width: 100%; height: 200%;">{{ input }}</textarea>
+                        </div>
+            
+            
+                    </form>
+                    <div class="right">
+                        <textarea placeholder="Enter text for summarization" ondragstart="return false;" id="inputText" name='data' type="text" rows="8" cols="40" required style="font-size: 15px; font-family: 'Arial', 'Helvetica', sans-serif; width: 100%; height: 400%;">{{ input }}</textarea>
+                    </div>
+        
+                </div>
+            </div>
+            <div class="section" id="bottom">Bottom Section</div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"></script>
+    <script>
+    function toggleLanguageMenu() {
+        var languageMenu = document.getElementById('language-menu');
+        languageMenu.style.display = (languageMenu.style.display === 'none' || languageMenu.style.display === '') ? 'block' : 'none';
+    }
+    function showLanguages() {
+    document.querySelector('.language-dropdown').style.display = 'block';
+  }
+
+  function hideLanguages() {
+    document.querySelector('.language-dropdown').style.display = 'none';
+  }
+
+  function changeLanguage(lang) {
+    console.log('Selected language:', lang);
+  }
+  </script> -->
+
+</body>
+
+</html>
